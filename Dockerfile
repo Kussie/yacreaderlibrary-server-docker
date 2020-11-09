@@ -43,7 +43,12 @@ RUN \
  unzip master.zip  && \
  rm master.zip && \
  cd unarr-master/lzmasdk && \
- ln -s 7zTypes.h Types.h
+ ln -s 7zTypes.h Types.h && \
+ cd compressed_archive/ && \
+ wget https://github.com/btolab/p7zip/archive/master.zip && \
+ unzip master.zip  && \
+ rm master.zip && \
+ mv p7zip-master libp7zip \
 RUN \
  cd /src/git/YACReaderLibraryServer && \
  qmake "CONFIG+=server_standalone" YACReaderLibraryServer.pro && \
