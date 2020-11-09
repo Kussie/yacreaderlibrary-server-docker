@@ -27,7 +27,9 @@ RUN \
     qtdeclarative5-dev \
     sqlite3 \
     unzip \
-    wget \   
+    wget \
+    p7zip \
+    p7zip-full \
     build-essential	
 RUN \
  echo "**** install YACReader ****" && \
@@ -44,11 +46,11 @@ RUN \
  rm master.zip && \
  cd unarr-master/lzmasdk && \
  ln -s 7zTypes.h Types.h && \
- cd compressed_archive/ && \
+ cd /src/git/compressed_archive && \
  wget https://github.com/btolab/p7zip/archive/master.zip && \
  unzip master.zip  && \
  rm master.zip && \
- mv p7zip-master libp7zip \
+ mv p7zip-master libp7zip
 RUN \
  cd /src/git/YACReaderLibraryServer && \
  qmake "CONFIG+=server_standalone" YACReaderLibraryServer.pro && \
